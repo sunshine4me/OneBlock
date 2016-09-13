@@ -1,0 +1,10 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/OneBlockSolution/src/blockPlayDataEntities/obj
+/OneBlockSolution/src/blockPlayDataEntities/bin
+/OneBlockSolution/src/oneBlockWeb/App_Data
+/OneBlockSolution/src/oneBlockWeb/obj
+/OneBlockSolution/src/oneBlockWeb/bin
+/OneBlockSolution/.vs

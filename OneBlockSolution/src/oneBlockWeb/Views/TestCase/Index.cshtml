@@ -1,0 +1,321 @@
+﻿@{
+    ViewData["Title"] = "案例编辑";
+}
+
+<div class="row">
+    <div class="col-md-3">
+
+        <div id="p" class="easyui-panel" data-options="iconCls:'glyphicon glyphicon-th-large'" title="案例列表" style="width:100%;min-height:200px;padding:10px;">
+            <ul id="caseTreeList"></ul>
+        </div>
+
+
+    </div>
+
+    <div id="paneltab" class="easyui-tabs col-md-9">
+        <div title="帮助" data-options="iconCls:'icon-help',closable:true" style="padding:10px">
+            This is the help content.
+        </div>
+    </div>
+
+</div>
+
+
+<div id="rootMenu" class="easyui-menu" style="width:150px;">
+    <div data-options="iconCls:'icon-add'">
+        <span>添加</span>
+        <div style="width:150px;">
+            <div data-options="iconCls:'tree-folder'" class="folderAdd">文件夹</div>
+            <div data-options="iconCls:'tree-file'" class="tabAdd fileAdd">案例</div>
+        </div>
+    </div>
+    <div class="menu-sep"></div>
+    <div class="nodeReload" data-options="iconCls:'icon-reload'">重新加载</div>
+</div>
+
+<div id="folderMenu" class="easyui-menu" style="width:150px;">
+    <div data-options="iconCls:'icon-add'">
+        <span>添加</span>
+        <div style="width:150px;">
+            <div data-options="iconCls:'tree-folder'" class="folderAdd">文件夹</div>
+            <div data-options="iconCls:'tree-file'" class="tabAdd fileAdd">案例</div>
+        </div>
+    </div>
+    <div class="txtEdit">重命名</div>
+    <div class="nodeRemove" data-options="iconCls:'icon-remove'">删除文件夹</div>
+    <div class="menu-sep"></div>
+    <div class="nodeReload" data-options="iconCls:'icon-reload'">重新加载</div>
+</div>
+
+<div id="fileMenu" class="easyui-menu" style="width:150px;">
+    <div class="tabAdd editCase" data-options="iconCls:'icon-edit'">编辑案例</div>
+    <div class="txtEdit">重命名</div>
+    <div class="nodeRemove" data-options="iconCls:'icon-remove'">删除案例</div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await Html.RenderPartialAsync("_EasyUIPartial");
+    }
+
+    <script type="text/javascript">
+
+        $(document).ajaxStart(function () {
+            $.messager.progress({ title: '请稍后', msg: '努力加载中...' });
+        });
+
+        using(["tree", "messager"], function () {
+            $('#caseTreeList').tree({
+                checkbox: false,
+                lines: true,
+                animate: true,
+                dnd: true,
+                dragPoint: ["append", "append", "append", "append"],
+                url: 'caseTreeData',
+                onContextMenu: function (e, node) {
+                    e.preventDefault();
+                    $(this).tree('select', node.target);
+                    var contextMenu;
+                    if (node.type == 1) {
+                        contextMenu = $('#fileMenu');
+                    } else if (node.id == 0) {
+                        contextMenu = $('#rootMenu');
+                    } else
+                        contextMenu = $('#folderMenu');
+
+                    contextMenu.menu('show', {
+                        left: e.pageX - 20,
+                        top: e.pageY - 1
+                    });
+
+                },
+                dataFormat: formatServerData,
+                onAfterEdit: function (node) {
+                    node.name = node.text;
+                    $.post("editName/" + node.id, { name: node.name });
+                },
+                onDragOver: function (target, source) {
+                    if ($(this).tree("getNode", target).type == 0)
+                        return true;
+                    else
+                        return false;
+
+                },
+                onBeforeDrag: function (node) {
+                    if (!$(this).tree("getParent", node.target))//根节点不给拖
+                        return false;
+                },
+                onBeforeDrop: function (target, source, point) {
+                    var targetNode = $(this).tree("getNode", target);
+
+                    var ret = false;
+                    $.ajax({
+                        url: 'sort',
+                        type: 'post',
+                        async: false,//使用同步的方式,页面会卡住,需要优化
+                        data: { targetID: targetNode.id, sourceID: source.id },
+                        success: function (data) {
+                            ret = true;
+                        }
+                    });
+                    return ret;
+
+                },
+            });
+        });
+
+        //格式化服务器数据变为easyUI tree可用的格式
+        function formatServerData(data) {
+            for (var i in data) {
+                data[i].text = data[i].name;
+                if (data[i].type == 0)
+                    data[i].state = "closed";
+            }
+        }
+       
+
+        $(".txtEdit").click(function (event) {
+            var node = $("#caseTreeList").tree("getSelected");
+            $("#caseTreeList").tree('beginEdit', node.target);
+        })
+
+        $(".folderAdd").click(function (event) {
+
+            var node = $("#caseTreeList").tree("getSelected");
+
+
+
+            function addFolderEvent(expandNode) {
+                $("#caseTreeList").tree("options").onExpand = function () { };//清空展开事件
+                $.post("folderAdd", { id: expandNode.id }, function (result) {
+
+                    formatServerData([result]);
+
+                    var newNode = $('#caseTreeList').tree('append', {
+                        parent: expandNode.target,
+                        data: [result]
+                    }).tree('find', result.id);
+                    $('#caseTreeList').tree('select', newNode.target);
+
+                });
+            }
+
+
+            if (node.state == "open") { //如果已经打开直接add
+                addFolderEvent(node);
+            } else {
+                //动态绑定展开后事件,展开后添加案例
+                $("#caseTreeList").tree("options").onExpand = addFolderEvent;
+                //展开
+                $("#caseTreeList").tree("expand", node.target)
+            }
+
+        })
+
+        $(".fileAdd").click(function (event) {
+            var node = $("#caseTreeList").tree("getSelected");
+
+
+            //添加事件
+            function addFileEvent(expandNode) {
+                $("#caseTreeList").tree("options").onExpand = function () { };//清空展开事件
+                $.post("fileAdd", { id: expandNode.id }, function (result) {
+                    formatServerData([result]);
+                    var newNode = $('#caseTreeList').tree('append', {
+                        parent: expandNode.target,
+                        data: [result]
+                    }).tree('find', result.id);
+                    $('#caseTreeList').tree('select', newNode.target);
+
+
+                    editFile(newNode);
+                });
+            }
+
+            if (node.state == "open") { //如果已经打开直接add
+                addFileEvent(node);
+            } else {
+                //动态绑定展开后事件,展开后添加案例
+                $("#caseTreeList").tree("options").onExpand = addFileEvent;
+                //展开
+                $("#caseTreeList").tree("expand", node.target)
+            }
+
+        });
+
+        $(".nodeRemove").click(function (event) {
+            var node = $("#caseTreeList").tree("getSelected");
+            var msg = ' <span style=\'color:blue\'>' + node.text + '</span>';
+
+
+
+            $.messager.confirm('Message', '确认删除:' + msg + '?', function (r) {
+                if (r) {
+
+                    $.post("/TestCase/Delete", { ID: node.id }, function (result) {
+                        $("#caseTreeList").tree("remove", node.target);
+                    });
+                }
+            });
+        });
+
+
+        $(".nodeReload").click(function () {
+            var selectNode = $('#caseTreeList').tree("getSelected");
+            $('#caseTreeList').tree("reload", selectNode.target);//刷新
+
+        });
+
+        $(".editCase").click(function () {
+            var selectNode = $('#caseTreeList').tree("getSelected");
+            var tbs = $('#paneltab').tabs("tabs");
+
+            //删除已经打开的tab
+            for (var i = 0; i < tbs.length; i++) {
+                if (tbs[i].panel('options').id == selectNode.id) {
+                    $('#paneltab').tabs("close", i);
+                    break;
+                }
+            }
+            editFile(selectNode);
+
+        });
+      
+        function editFile(node) {
+            $('#paneltab').tabs('add', {
+                id: node.id,
+                height: "100%",
+                title: node.text,
+                iconCls: 'icon-file',
+                content: '<iframe scrolling="yes" frameborder="0"  src="caseTab/' + node.id + '" style="width:100%;"></iframe>',
+                closable: true,
+                tools:[{
+                    iconCls: 'icon-mini-refresh',
+                    handler: function () {
+                        $.messager.confirm('Message', '确认重新载入:' + node.text + '?', function (r) {
+                            if (r) {
+                                var tbs = $('#paneltab').tabs("tabs");
+                                //删除已经打开的tab
+                                for (var i = 0; i < tbs.length; i++) {
+                                    if (tbs[i].panel('options').id == node.id) {
+                                        var iframe = $(tbs[i]).find("iframe")[0];
+                                        iframe.src = iframe.src;
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        
+                    }
+                }]
+            });
+
+        }
+
+        function editBlockStep(blockID) {
+            var tbs = $('#paneltab').tabs("tabs");
+
+            //删除已经打开的tab
+            for (var i = 0; i < tbs.length; i++) {
+                if (tbs[i].panel('options').bsID == blockID) {
+                    $('#paneltab').tabs("close", i);
+                    break;
+                }
+            }
+
+            $('#paneltab').tabs('add', {
+                bsID: blockID,
+                height: "100%",
+                title: "Block." + blockID,
+                iconCls: 'icon-cubes',
+                content: '<iframe scrolling="yes" frameborder="0"  src="/BlockStep/editTab/' + blockID + '" style="width:100%;"></iframe>',
+                closable: true,
+                tools: [{
+                    iconCls: 'icon-mini-refresh',
+                    handler: function () {
+                        $.messager.confirm('Message', '确认重新载入:' + "Block." + blockID + '?', function (r) {
+                            if (r) {
+                                var tbs = $('#paneltab').tabs("tabs");
+                                //删除已经打开的tab
+                                for (var i = 0; i < tbs.length; i++) {
+                                    if (tbs[i].panel('options').bsID == blockID) {
+                                        var iframe = $(tbs[i]).find("iframe")[0];
+                                        iframe.src = iframe.src;
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+
+                    }
+                }]
+            });
+        }
+
+        
+
+    </script>
+}
