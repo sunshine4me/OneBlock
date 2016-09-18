@@ -22,7 +22,31 @@ namespace oneBlockWeb.Controllers
         }
         #endregion
 
-        // GET: /<controller>/
+        
+        public IActionResult Index() {
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult BlockTreeData() {
+            var List = (from t in _context.BlockStep
+                        where t.UserId == User.userID()
+                        select new blockTreeNode {
+                            id = t.Id,
+                            name = t.Name
+                        }).ToList();
+            return Json(List);
+
+        }
+
+        [HttpPost]
+        public void Delete(int id) {
+            var bsp = _context.BlockStep.First(t => t.Id == id && t.UserId == User.userID());
+            bsp.UserId = -1;
+            _context.SaveChanges();
+        }
+
         [HttpPost]
         public IActionResult build([FromBody]testCase model) {
 

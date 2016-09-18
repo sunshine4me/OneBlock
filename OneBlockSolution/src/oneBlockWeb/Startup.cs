@@ -64,8 +64,14 @@ namespace oneBlockWeb {
             services.AddApplicationInsightsTelemetry(Configuration);
 
 
-
-        
+            //应该可以和下面的合并
+            Newtonsoft.Json.JsonSerializerSettings setting = new Newtonsoft.Json.JsonSerializerSettings();
+            JsonConvert.DefaultSettings = new Func<JsonSerializerSettings>(() =>
+            {
+                setting.DateFormatString = "yyyy-MM-dd hh:mm:ss";//时间格式化
+                setting.NullValueHandling = NullValueHandling.Ignore;//忽略null值
+                return setting;
+            });
 
             services
                 .AddMvc()

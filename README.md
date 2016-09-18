@@ -1,12 +1,15 @@
-# blockPlay
+# OneBlock
 ASP.NET Core 1.0 + EF Core 1.0 Sqlite + Bootstrap
-自动化案例管理平台
+跨OS 自动化案例管理平台
 像搭积木一样构建你的自动化案例
 
-[live demo](#)
+[在线 demo](#http://139.196.177.74:5000/)
 
-#已经开发功能
-1. 用户登录注册
-2. test framework 管理
-3. 案例管理
-4. 后台管理
+# 安装版本
+
+- [Windows 7(x64) / Windows Server 2008 R2(x64)](#http://pan.baidu.com/s/1eR3yj42)
+- [Windows 10](#http://pan.baidu.com/s/1eR3yj42)
+- [Linxu CentOS 7](#http://pan.baidu.com/s/1eR3yj42)
+- [OS X 10.10](#http://pan.baidu.com/s/1eR3yj42)
+- [OS X 10.11](#http://pan.baidu.com/s/1eR3yj42)
+

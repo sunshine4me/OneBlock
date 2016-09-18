@@ -1,5 +1,6 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="js/auto-line-number.js" />
+/// <reference path="js/docs.min.js" />
 /// <reference path="js/editcasetree.js" />
 /// <reference path="js/site.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />

@@ -68,7 +68,9 @@ a:hover, a:focus {
 .panel {
     border-radius: 3px;
 }
-
+.tree-icon.fa-cubes{
+    font-size:14px;
+}
 
 /*navbar*/
 /*整体风格 蓝色*/

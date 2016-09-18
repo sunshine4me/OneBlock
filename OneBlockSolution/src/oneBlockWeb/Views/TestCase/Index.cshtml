@@ -14,7 +14,80 @@
 
     <div id="paneltab" class="easyui-tabs col-md-9">
         <div title="帮助" data-options="iconCls:'icon-help',closable:true" style="padding:10px">
-            This is the help content.
+           
+            <div class="bs-docs-section">
+                <h1 id="help2" class="page-header">案例 TestCase</h1>
+
+                <p class="lead">案例由多个基础组件（Step）或者模块（BlockStep）组成。</p>
+
+                <p>右键案例树列表，创建、编辑或删除案例。</p>
+                <div class="bs-example">
+                    <img class="img-responsive" src="~/help/help2.png" />
+                </div>
+
+                <p>案例可以移动到案例树列表的任何文件夹节点上。</p>
+                <div class="bs-example">
+                    <img class="img-responsive" src="~/help/help3.gif" />
+                </div>
+
+
+                <p>选择基础组件（Step）或者模块（BlockStep），拖拽到案例上创建步骤。</p>
+                <p>拖拽案例上的步骤到垃圾桶删除步骤，你也可以使用右键进行删除。</p>
+                <div class="bs-example" data-example-id="body-copy">
+                    <img class="img-responsive" src="~/help/help4.gif" />
+                </div>
+
+                <p>双击或者右键进行步骤的编辑。</p>
+                <div class="bs-example" data-example-id="body-copy">
+                    <img class="img-responsive" src="~/help/help5.gif" />
+                </div>
+            </div>
+
+            <div class="bs-docs-section">
+                <h1 id="help3" class="page-header">模块 BlockStep</h1>
+
+                <p class="lead">模块（BlockStep）由多个基础组件（Step）组成。</p>
+                <div class="bs-example">
+                    <p>模块生成：</p>
+                    <img class="img-responsive" src="~/help/help12.png" />
+                    <p>模块展开：</p>
+                    <img class="img-responsive" src="~/help/help11.png" />
+                </div>
+
+                <h2 id="help3-1">创建 BlockStep</h2>
+                <p>勾选多个基础组件后创建BlockStep，基础组件中的动态参数（Param）将作为模块的参数存在。</p>
+                <div class="bs-example">
+                    <img class="img-responsive" src="~/help/help6.png" />
+                </div>
+
+
+            </div>
+
+            <div class="bs-docs-section">
+                <h1 id="help4" class="page-header">动态参数 Param</h1>
+
+
+                <h2 id="help4-1">定义</h2>
+                <p>
+                    <ul>
+                        <li>以{}包括的即为动态参数，内部文字作为参数名</li>
+                        <li>动态参数可以定义在任何位置。</li>
+                        <li>相同名字的参数代表同一个参数</li>
+                    </ul>
+                </p>
+                <div class="bs-example">
+                    <img class="img-responsive" src="~/help/help8.png" />
+                </div>
+
+                <h2 id="help4-2">使用</h2>
+                <p>
+                    <ul>
+                        <li>动态参数在组合成模块（BlockStep）时将作为模块的参数。</li>
+                        <li>执行时，如果案例中包含动态参数必须先填写才能执行。</li>
+                    </ul>
+                </p>
+
+            </div>
         </div>
     </div>
 

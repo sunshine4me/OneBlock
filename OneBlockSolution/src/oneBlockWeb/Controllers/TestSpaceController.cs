@@ -34,7 +34,7 @@ namespace oneBlockWeb.Controllers {
                 TestSpace newts = new TestSpace();
                 newts.Name = md.name;
                 newts.Describe = md.describe;
-                var sp = JsonConvert.DeserializeObject<testSapce>(md.spacedata);
+                var sp = JsonConvert.DeserializeObject<List<spaceStep>>(md.spacedata);
                 newts.SapceData = JsonConvert.SerializeObject(sp);
                 newts.UserId = userID;
                 _context.TestSpace.Add(newts);
@@ -78,7 +78,7 @@ namespace oneBlockWeb.Controllers {
 
                 ts.Name = md.name;
                 ts.Describe = md.describe;
-                var sp = JsonConvert.DeserializeObject<testSapce>(md.spacedata);
+                var sp = JsonConvert.DeserializeObject<List<spaceStep>>(md.spacedata);
                 
                 ts.SapceData = JsonConvert.SerializeObject(sp);
 

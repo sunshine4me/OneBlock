@@ -12,8 +12,9 @@ namespace oneBlockWeb {
     {
         public static testSapce spaceModel(this TestSpace _testSpace)
         {
-            var md =  JsonConvert.DeserializeObject<testSapce>(_testSpace.SapceData);
+            var md = new testSapce();
             md.id = _testSpace.Id;
+            md.steps =  JsonConvert.DeserializeObject<List<spaceStep>>(_testSpace.SapceData);
             return md;
         }
 
@@ -59,18 +60,18 @@ namespace oneBlockWeb {
             List<SelectListItem> list = new List<SelectListItem>();
             
 
-            SelectListGroup slg = new SelectListGroup { Name = "其他人的testSpace" };
+            SelectListGroup slg = new SelectListGroup { Name = "其他人的TestSpace" };
             foreach (var s in sps) {
                     list.Add(new SelectListItem { Text = $"{s.spacename}({s.username})", Value = s.id.ToString(), Group = slg });
             }
 
-            SelectListGroup myslg = new SelectListGroup { Name = "你的testSpace" };
+            SelectListGroup myslg = new SelectListGroup { Name = "你的TestSpace" };
             foreach (var s in mysps) {
                     list.Add(new SelectListItem { Text = s.spacename, Value = s.id.ToString(), Group = myslg });
                 
             }
 
-            list.Add(new SelectListItem { Text = "BlockStep", Value = "0" ,Group = new SelectListGroup { Name = "Block" } });
+            list.Add(new SelectListItem { Text = "你的模块", Value = "0" ,Group = new SelectListGroup { Name = "BlockStep" } });
 
             return list;
         }

@@ -48,15 +48,20 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">首页</a></li>
 
                     <li class="dropdown">
-
-                        <a href="/TestCase/Index">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             案例管理
+                            <b class="caret"></b>
                         </a>
+                        <ul class="dropdown-menu dropdown-menu-sw">
+                            <li><a href="/TestCase/Index">测试案例</a></li>
+                            <li><a href="/BlockStep/Index">组合模块</a></li>
+                        </ul>
+                        
                     </li>
-
+                    <li><a asp-area="" asp-controller="Home" asp-action="Help">帮助</a></li>
                     @if (User.IsInRole("admin")) {
                         <li class="dropdown">
 

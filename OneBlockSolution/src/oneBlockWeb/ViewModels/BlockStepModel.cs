@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace oneBlockWeb.ViewModels
 {
+
+    /// <summary>
+    /// 案例List tree数据
+    /// </summary>
+    public class blockTreeNode {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
+
     public class BlockStepAddModel {
         public string blockName { get; set; }
         public Dictionary<string,string>  attrs{ get; set; }
