@@ -38,7 +38,18 @@ namespace oneBlockWeb.Controllers
         [HttpPost]
         public IActionResult ResetPassword(resetPasswordModel model)
         {
-            return View();
+            if (ModelState.IsValid) {
+                var user = _context.PlayUser.First(t => t.Id == User.userID());
+                if(user.Password==model.CurrentPassword) {
+                    user.Password = model.Password;
+                    _context.SaveChanges();
+                    return Redirect("/");
+                } else {
+                    ModelState.AddModelError("", "旧密码错误!");
+                    return View("Account", model);
+                }
+            }
+            return View("Account", model);
         }
 
         [HttpGet]
