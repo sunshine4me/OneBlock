@@ -16,7 +16,6 @@
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <ItemGroup>
-    <DnxInvisibleContent Include="App_Data\blockPlayDB.db" />
     <DnxInvisibleContent Include="bower.json" />
     <DnxInvisibleContent Include=".bowerrc" />
   </ItemGroup>
