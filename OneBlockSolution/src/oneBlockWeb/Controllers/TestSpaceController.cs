@@ -20,7 +20,7 @@ namespace oneBlockWeb.Controllers {
         public IActionResult Add() {
             TestSapceAddModel tsa = new TestSapceAddModel();
 
-            tsa.spacedata = "{\"steps\":[{\"name\":\"click\",\"describe\":\"点击操作\",\"attrs\":[{\"name\":\"id\",\"describe\":\"控件id\"},{\"name\":\"side\",\"describe\":\"点击位置\",\"defvalue\":\"2\",\"list\":{\"控件左侧\":\"1\",\"中间\":\"2\",\"控件右侧\":\"3\"}}]}]}";
+            tsa.spacedata = "[{\"name\":\"click\",\"describe\":\"点击操作\",\"attrs\":[{\"name\":\"id\",\"describe\":\"控件id\"},{\"name\":\"side\",\"describe\":\"点击位置\",\"defvalue\":\"2\",\"list\":{\"控件左侧\":\"1\",\"中间\":\"2\",\"控件右侧\":\"3\"}}]}]";
 
 
             return View(tsa);
