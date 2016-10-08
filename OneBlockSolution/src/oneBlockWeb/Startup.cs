@@ -57,7 +57,7 @@ namespace oneBlockWeb {
             //注入用户相关操作对象
             services.AddSingleton<userLV>();
 
-            //自定义配置文件
+            //注入自定义配置数据
             services.AddOptions();
             services.Configure<WebSetting>(Configuration.GetSection("WebSetting"));
 
@@ -89,7 +89,6 @@ namespace oneBlockWeb {
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            var defaultcon = Configuration.GetConnectionString("DefaultConnection");
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
