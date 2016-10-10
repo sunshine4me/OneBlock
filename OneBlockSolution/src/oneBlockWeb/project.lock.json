@@ -1761,6 +1761,19 @@
           }
         }
       },
+      "NETCore.Extensions.Excel/1.0.4": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
+        }
+      },
       "NETStandard.Library/1.6.0": {
         "type": "package",
         "dependencies": {
@@ -4047,7 +4060,7 @@
           "System.Xml.ReaderWriter": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XmlDocument.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
@@ -5837,6 +5850,19 @@
         },
         "runtime": {
           "runtimes/unix/lib/netstandard1.3/Microsoft.Win32.Registry.dll": {}
+        }
+      },
+      "NETCore.Extensions.Excel/1.0.4": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -8387,7 +8413,7 @@
           "System.Xml.ReaderWriter": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XmlDocument.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
@@ -10179,6 +10205,19 @@
           "runtimes/unix/lib/netstandard1.3/Microsoft.Win32.Registry.dll": {}
         }
       },
+      "NETCore.Extensions.Excel/1.0.4": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
+        }
+      },
       "NETStandard.Library/1.6.0": {
         "type": "package",
         "dependencies": {
@@ -12725,7 +12764,7 @@
           "System.Xml.ReaderWriter": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XmlDocument.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
@@ -14517,6 +14556,19 @@
           "runtimes/unix/lib/netstandard1.3/Microsoft.Win32.Registry.dll": {}
         }
       },
+      "NETCore.Extensions.Excel/1.0.4": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
+        }
+      },
       "NETStandard.Library/1.6.0": {
         "type": "package",
         "dependencies": {
@@ -17063,7 +17115,7 @@
           "System.Xml.ReaderWriter": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XmlDocument.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
@@ -18853,6 +18905,19 @@
         },
         "runtime": {
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll": {}
+        }
+      },
+      "NETCore.Extensions.Excel/1.0.4": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -21359,7 +21424,7 @@
           "System.Xml.ReaderWriter": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XmlDocument.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
@@ -23152,6 +23217,19 @@
         },
         "runtime": {
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll": {}
+        }
+      },
+      "NETCore.Extensions.Excel/1.0.4": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -25786,7 +25864,7 @@
           "System.Xml.ReaderWriter": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XmlDocument.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
@@ -27579,6 +27657,19 @@
         },
         "runtime": {
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll": {}
+        }
+      },
+      "NETCore.Extensions.Excel/1.0.4": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/NETCore.Extensions.Excel.dll": {}
         }
       },
       "NETStandard.Library/1.6.0": {
@@ -30213,7 +30304,7 @@
           "System.Xml.ReaderWriter": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XmlDocument.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
@@ -31691,6 +31782,16 @@
         "runtimes/win/lib/net46/Microsoft.Win32.Registry.dll",
         "runtimes/win/lib/netcore50/_._",
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll"
+      ]
+    },
+    "NETCore.Extensions.Excel/1.0.4": {
+      "sha512": "SG3/+8rzIScqh9RGHBQRim++eQrDdbpOtgdnxvhZYqj/HO1R8eUZGw3wnLYEtbycz27/8QdoHKZ8wY5C4H76cA==",
+      "type": "package",
+      "path": "NETCore.Extensions.Excel/1.0.4",
+      "files": [
+        "NETCore.Extensions.Excel.1.0.4.nupkg.sha512",
+        "NETCore.Extensions.Excel.nuspec",
+        "lib/netstandard1.6/NETCore.Extensions.Excel.dll"
       ]
     },
     "NETStandard.Library/1.6.0": {
@@ -38001,6 +38102,7 @@
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.0.0",
       "Microsoft.NETCore.App >= 1.0.1",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0",
+      "NETCore.Extensions.Excel >= 1.0.4",
       "blockPlayDataEntities >= 1.0.0-*"
     ],
     ".NETCoreApp,Version=v1.0": []

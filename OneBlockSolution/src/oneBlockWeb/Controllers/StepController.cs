@@ -77,6 +77,19 @@ namespace oneBlockWeb.Controllers {
             var spStep = sp.spaceModel().steps.FirstOrDefault(t => t.name == model.name);
             if (spStep == null) return unknownStepEdit(model);
 
+            //添加是否启用属性
+            if (spStep.attrs.FirstOrDefault(t => t.name == "是否启用") == null) {
+                var list = new Dictionary<string, string>();
+                list.Add("启用","true");
+                list.Add("不启用", "false");
+                spStep.attrs.Add(new spaceStepAttr {
+                    name = "是否启用",
+                    defValue = "true",
+                    describe="不启用的步骤将在生成时删除",
+                    list = list
+                });
+            }
+
             se.fullName = $"{sp.Name} - {spStep.name}({spStep.describe})";
             se.describe = model.describe;
             se.attrs = (from t in spStep.attrs
@@ -86,6 +99,8 @@ namespace oneBlockWeb.Controllers {
                            describe = t.describe,
                            list = t.list
                        }).ToList();
+
+       
             return se;
         }
 
@@ -112,9 +127,7 @@ namespace oneBlockWeb.Controllers {
         /// </summary>
         private StepEditModel unknownStepEdit(stepModel model) {
             var se = new StepEditModel();
-
-
-
+            
             se.fullName = "unknown";
             se.describe = model.describe;
             se.attrs = (from t in model.attrs

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using blockPlayDataEntities;
 using oneBlockWeb.ViewModels;
-using System.Threading;
 using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using System.IO;
 
 namespace oneBlockWeb.Controllers {
 
@@ -155,8 +153,19 @@ namespace oneBlockWeb.Controllers {
 
         }
 
-       
+        [HttpPost]
+        public IActionResult downExcel(List<int> ids) {
+
+            if (ids == null) return null;
+            MemoryStream stm = TestCaseExtend.getSceneExcelMS(ids, _context);
+            
+            return File(stm, "application/octet-stream", "数据场景.xlsx");
+            
+
+        }
         
+
+
 
         #region 私有方法
         private IActionResult _caseTreeRoot() {
@@ -215,6 +224,8 @@ namespace oneBlockWeb.Controllers {
             step.attrs = new Dictionary<string, string>();
             return JsonConvert.SerializeObject(csm);
         }
+
+       
         #endregion
 
     }
