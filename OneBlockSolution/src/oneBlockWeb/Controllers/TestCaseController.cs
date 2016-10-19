@@ -107,6 +107,7 @@ namespace oneBlockWeb.Controllers {
 
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult runCase(int id, Dictionary<string,string> attrs) {
             var testcase = _context.TestCase.FirstOrDefault(t => t.Id == id);

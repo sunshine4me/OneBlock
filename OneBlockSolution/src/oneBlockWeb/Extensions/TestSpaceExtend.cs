@@ -39,7 +39,7 @@ namespace oneBlockWeb {
         public static List<SelectListItem> spaceSelectList(this blockPlayDBContext _db ,int userID) {
             
             var sps = from t in _db.TestSpace
-                      where t.UserId==1
+                      where t.UserId==1 && t.UserId != userID
                       select new {
                           spacename = t.Name,
                           userID = t.UserId,
