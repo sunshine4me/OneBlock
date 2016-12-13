@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using oneBlockWeb.DI;
 using Newtonsoft.Json;
 using System;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace oneBlockWeb {
     public class Startup
@@ -112,7 +113,17 @@ namespace oneBlockWeb {
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
-            
+
+
+            // Set up custom content types - associating file extension to MIME type
+            var provider = new FileExtensionContentTypeProvider();
+            provider.Mappings.Add(".plist", "application/x-msdownload");
+
+            // Serve static files.
+            app.UseStaticFiles(new StaticFileOptions { ContentTypeProvider = provider });
+
+
+
             //权限相关
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
