@@ -1,11 +1,11 @@
 # OneBlock
 ASP.NET Core 1.0 + EF Core 1.0 Sqlite + Bootstrap
-¿çOS ×Ô¶¯»¯°¸Àı¹ÜÀíÆ½Ì¨
-Ïñ´î»ıÄ¾Ò»Ñù¹¹½¨ÄãµÄ×Ô¶¯»¯°¸Àı
+è·¨OS è‡ªåŠ¨åŒ–æ¡ˆä¾‹ç®¡ç†å¹³å°
+åƒæ­ç§¯æœ¨ä¸€æ ·æ„å»ºä½ çš„è‡ªåŠ¨åŒ–æ¡ˆä¾‹
 
-[ÔÚÏß demo](http://139.196.177.74:5000/)
+[åœ¨çº¿ demo](http://122.152.205.15:5000/)
 
-# °²×°°æ±¾
+# å®‰è£…ç‰ˆæœ¬
 
 - [Windows 7(x64) / Windows Server 2008 R2(x64)](https://github.com/sunshine4Cpic/OneBlockInstall)
 - [Windows 10](https://github.com/sunshine4Cpic/OneBlockInstall/tree/win10-x64)
